@@ -1,19 +1,15 @@
-// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
-import RegisterPage from './pages/RegisterPage';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import AppRouter from './router/AppRouter';
+import { AuthProvider } from './context/AuthContext';
+import { ToastProvider } from './context/ToastContext';
 
-const App = () => {
+function App() {
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/register" element={<RegisterPage />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <AuthProvider>
+      <ToastProvider>
+        <AppRouter />
+      </ToastProvider>
+    </AuthProvider>
   );
 }
 
